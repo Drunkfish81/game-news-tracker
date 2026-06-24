@@ -2,7 +2,7 @@ name: 游戏公司每日新闻抓取
 
 on:
   schedule:
-    - cron: "0 1 * * *"
+    - cron: "0 0 * * *"  # UTC 0:00 = 北京时间 8:00
   workflow_dispatch:
 
 jobs:
