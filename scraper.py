@@ -19,30 +19,55 @@ from gnews import GNews
 # 配置
 # ============================================================
 
-# 目标公司及搜索关键词（英文 + 中文双通道）
+# 目标公司及搜索关键词（每条 query 覆盖不同角度，避免结果趋同）
+# 三通道设计: ①企业/金融 ②产品/游戏 ③行业/生态
 COMPANIES = {
     "Roblox": {
-        "queries": ["Roblox corporation gaming"],
+        "queries": [
+            "Roblox corporation stock revenue",       # 企业/金融
+            "Roblox game platform update",            # 产品/游戏
+            "Roblox player growth developer creator", # 行业/生态
+        ],
     },
     "Epic Games": {
-        "queries": ["Epic Games Unreal Fortnite"],
+        "queries": [
+            "Epic Games Unreal Engine Fortnite",       # 核心产品
+            "Epic Games Store publishing lawsuit",     # 商店/法律
+            "Epic Games developer creator partnership",# 行业/生态
+        ],
     },
     "Take-Two": {
-        "queries": ["Take-Two Interactive Rockstar GTA"],
+        "queries": [
+            "Take-Two Interactive revenue stock",      # 企业/金融
+            "GTA 6 Grand Theft Auto Rockstar",         # 产品/Rockstar
+            "2K Games NBA Borderlands sports mobile",  # 2K 品牌
+        ],
     },
     "Microsoft": {
-        "queries": ["Microsoft Xbox gaming Activision"],
+        "queries": [
+            "Microsoft Xbox Game Pass gaming",         # 企业/Xbox
+            "Activision Blizzard Call of Duty",        # 动视暴雪
+            "Microsoft gaming studio acquisition",     # 行业/收购
+        ],
     },
     "EA": {
-        "queries": ["Electronic Arts EA gaming"],
+        "queries": [
+            "Electronic Arts revenue stock gaming",    # 企业/金融
+            "EA Sports FC Madden Apex Legends Battlefield", # 产品
+            "EA developer studio game technology",     # 生态/技术
+        ],
     },
     "Sony": {
-        "queries": ["Sony PlayStation gaming"],
+        "queries": [
+            "Sony PlayStation revenue gaming",         # 企业
+            "PlayStation 5 PS5 game release exclusive",# 产品
+            "Sony gaming studio acquisition Bungie",   # 生态/收购
+        ],
     },
 }
 
-# 每家公司每次搜索最多获取条数
-MAX_RESULTS_PER_QUERY = 8
+# 每条 query 获取条数（多 query 以覆盖不同角度，总量 12/公司）
+MAX_RESULTS_PER_QUERY = 4
 # 只保留最近 N 天的新闻
 MAX_AGE_DAYS = 3
 # 请求间隔（秒）
